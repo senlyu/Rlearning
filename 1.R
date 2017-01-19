@@ -112,3 +112,6 @@ attributes(whiteside)
 edit(Cars93)
 #show all the datasets
 data()
+
+
+library(ISwR)
