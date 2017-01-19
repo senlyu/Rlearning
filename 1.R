@@ -1,4 +1,9 @@
-#1
+#class 1
+#
+#
+#
+#
+#
 log(769)
 6^5
 #get 10 random numbers
@@ -30,6 +35,7 @@ weight=c(60,72,57,90,95,72)
 height=c(1.75,1.8,1.65,1.9,1.74,1.91)
 # 
 mean(weight)
+mean(height)
 sd(height)
 a=median(weight)
 quantile(height,probs = 0.75)
@@ -38,3 +44,31 @@ quantile(height,probs=c(0.3,0.5))
 length(height)
 range(height)
 t.test(weight,mu=80)
+
+
+bmi=weight/height^2
+bmi
+# graph
+plot(height,weight,pch=3,
+     main="first graph",col="salmon4",ylim=c(0,100),xlim = c(1,3))
+colors()
+#voctor slice
+weight=c(weight,86)
+height=c(height,weight[1])
+height=height[1:6]
+height=c(height,NA)
+#mean args
+mean(height,na.rm = T)
+# voctor diff date types
+gender=c("M","F","M","F","F","M","F")
+names(gender)=c("M","F","M","F","F","M","F")
+# because gender is caterary data, so need to change to factor
+plot(factor(gender),weight)
+
+# seqence
+x=seq(1,100,by=7)
+# repeat
+y=rep(7,100)
+z=rep(c("A","B","C"),100)
+zz=rep(c("A","B"),c(4,5))
+
