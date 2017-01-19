@@ -57,11 +57,21 @@ weight=c(weight,86)
 height=c(height,weight[1])
 height=height[1:6]
 height=c(height,NA)
+weight[5]
+weight[c(2,6)]
+weight[1:4]
+weight[weight>73]
+height[height>1.7&is.na(height)==F]
+# this is useful
+f=gender=="F"
+
+
+
 #mean args
 mean(height,na.rm = T)
 # voctor diff date types
 gender=c("M","F","M","F","F","M","F")
-names(gender)=c("M","F","M","F","F","M","F")
+names(gender)=c("1","2","4","3","5","7","9")
 # because gender is caterary data, so need to change to factor
 plot(factor(gender),weight)
 
@@ -72,3 +82,33 @@ y=rep(7,100)
 z=rep(c("A","B","C"),100)
 zz=rep(c("A","B"),c(4,5))
 
+#dataframe
+ghw=data.frame(gender,height,weight)
+
+ghw$height
+plot(ghw$height,ghw$weight)
+#can only read
+edit(ghw)
+#can read and write
+fix(ghw)
+ghw$gender[4]="F"
+#open new window
+View(ghw)
+
+ghw[c(2,4,5),]
+ghw[ghw$gender=="M",]
+
+plot(whiteside$Insul,whiteside$Gas)
+# datafram structure, auto change to factor!
+str(whiteside)
+# dimensions of data structure
+dim(whiteside)
+
+summary(whiteside)
+class(whiteside)
+attributes(whiteside)
+
+
+edit(Cars93)
+#show all the datasets
+data()
