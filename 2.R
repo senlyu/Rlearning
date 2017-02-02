@@ -82,6 +82,7 @@ summarize(xxxx,mean(salary),mean(yrs.service),median(yrs.since.phd))
 
 #visualization
 attach(whiteside)
+detach(whiteside)
 plot(Insul)
 plot(Insul,Gas)
 plot(Temp,Gas)
@@ -97,16 +98,33 @@ l1 = paste("Mean Gas = ",round(mean(Gas),2))
 text(0,4,l1)
 l2 = paste("Mean Temp = ",mean(Temp))
 text(5,5,l2,srt=90)
+s1 = whiteside[Insul=="Before",]
+points(s1$Temp,s1$Gas,pch=19,col="blue")
+# this is how to use points, look into this
+s2 = whiteside[Temp<mean(Temp)&Gas<mean(Gas),]
+points(s2$Temp,s2$Gas,col="green",cex=3)
+         
+s2
 
+# set the graph envirnment
+opar = par()
 
+opar = par()
+par(bg="white",mfrow=c(2,2),las=2,col="red")
+plot(Temp,Gas)
+plot(Temp,Gas,type="h")
+plot(Insul,Gas,ylab="Gas")
+plot(Insul,Temp,ylab="Temp")
+par(opar)
+plot(Temp,Gas,type="h")
 
-
-
-
-
-
-
-
+# other graph types
+boxplot(Gas~Insul,col = c("green","orange"),notch=T,horizontal = T)
+stripchart(Gas~Insul,pch=19,col=c("green","orange"),method = "jitter")
+                           
+x = aggregate(Salaries$salary,list(Salaries$rank),mean)                           
+pie(x$x,labels = x$Group.1,col=rainbow(3))
+dotchart(x$x,labels = x$Group.1,col=rainbow(3))
 
 
 
