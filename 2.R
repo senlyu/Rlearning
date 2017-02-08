@@ -127,6 +127,25 @@ pie(x$x,labels = x$Group.1,col=rainbow(3))
 dotchart(x$x,labels = x$Group.1,col=rainbow(3))
 
 
+dsq = quakes
+#Split the plotting region into 1 row and 3 columns with grey background and blue color
+opar = par()
+par(bg="grey",mfrow=c(1,3),col="blue")
+#and then plot the following graphs: lat and long, depth and mag, stations and mag.
+plot(dsq$lat,dsq$long)
+plot(dsq$depth,dsq$mag)
+plot(dsq$stations,dsq$mag)
+par(opar)
+
+#Draw a histogram for mag with density on the y-axis.
+hist(dsq$mag)
+
+#Add a vertical line to indicate the mean of mag in red with line width 3.
+abline(v=mean(dsq$mag),col="red",lwd=3)
+
+#Give the line an appropriate label.
+label1 = paste("Avg Temp = ",mean(dsq$mag))
+text(5,1,l2)
 
 
 
