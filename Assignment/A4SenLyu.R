@@ -18,11 +18,12 @@ plot(x,y,col = "blue",ylim=c(0,10),ylab = "y and z" )
 points(x,z,col = "red",pch = 16)
 
 # create expression()
-y_t = expression(sqrt(log(x)))
+y_t = expression(y==sqrt(log(x)))
 # frac will be better than just use /
 # http://vis.supstat.com/2013/04/mathematical-annotation-in-r/
-z_t = expression(frac(50,x))
-text(200,3,y_t)
-text(200,1,z_t)
+z_t = expression(z==frac(50,x))
+text(400,3,y_t)
+text(400,1,z_t)
 
 title("Assignment 4")
+
