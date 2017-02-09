@@ -112,4 +112,31 @@ source("K:\\OneDrive\\Git\\Rlearning\\myfunctions.R")
 
 args(f1)
 
+# regression
+ensemble = lm(Numer$target~Numer$model1+Numer$model2)
+summary(ensemble)
+Numer$model3 = -1.11362 + 0.29938 * Numer$model1 + 0.75044 * Numer$model2
+View(Numer)
+f1(Numer$target,Numer$model2)
+f1(Numer$target,Numer$model3)
+plot(Numer$target,Numer$model3)
+lines(Numer$target,Numer$target,col="orange")
 
+# red the points who is more than 5% distence of the target
+s1 = Numer[abs(Numer$target-Numer$model3) > 5,]
+points(s1$target,s1$model3,col = "red")
+
+a = Numer$target
+m = Numer$model3
+cost = ifelse(abs(a-m)<5,0,2*abs(a-m))
+sum(cost)
+Numer$baseline = mean(a)
+b = Numer$baseline
+cost = ifelse(abs(a-b)<5,0,2*abs(a-b))
+sum(cost)
+
+
+
+# 
+Bin<-read.csv("K:\\OneDrive\\Git\\Rlearning\\BinaryPred.csv",header = FALSE)
+View(Bin)
