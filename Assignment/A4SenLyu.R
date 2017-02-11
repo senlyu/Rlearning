@@ -19,14 +19,15 @@ points(x,z,col = "red",pch = 16)
 
 # create expression()
 y_t = expression(y==sqrt(log(x)))
+
 # frac will be better than just use /
 # http://vis.supstat.com/2013/04/mathematical-annotation-in-r/
 z_t = expression(z==frac(50,x))
 
 y_t1 = expression(y==alpha^2+gamma+sqrt(beta))
 
-text(400,3,y_t)
-text(400,1,z_t)
+#text(400,3,y_t)
+#text(400,1,z_t)
 text(400,5,y_t1)
 
 
