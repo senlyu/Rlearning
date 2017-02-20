@@ -1,7 +1,7 @@
 # Assignment 6
 # SenLyu 
 
-# all the input 
+# all the functions have two self-made testset to test 
 
 # question1
 # the function takes a input vector and output a vector with the mean
@@ -28,7 +28,7 @@ resulttest11
 resulttest12
 
 # question2
-# function takes a vector and piy put a dataframe
+# function takes a vector and output a dataframe
 
 f2 = function(inputv, alpha = 0.8)
 {
@@ -36,6 +36,7 @@ f2 = function(inputv, alpha = 0.8)
   # since the input vector is numeric, the vector cannot be Null
   a = inputv[1]
   i = 1
+  # for each do the calculate, do n times
   while (i<n)
   {
     a[i+1] = a[i] + alpha * (inputv[i] -a[i])
@@ -45,6 +46,8 @@ f2 = function(inputv, alpha = 0.8)
   colnames(result) = c("actual", "predicted")
   return(result)
 }
+
+# test
 test21 = c(1:10)
 test22 = seq(100,150,2)
 resulttest21 = f2(test21)
@@ -56,6 +59,7 @@ resulttest22
 # use package schoolmath to find prim
 install.packages("schoolmath")
 # f3 function needs package schoolmath
+# we assume that the input numbers are positive
 f3 = function(a=1,b=1)
 {
   library(schoolmath)
@@ -64,6 +68,8 @@ f3 = function(a=1,b=1)
   for (i in seqs)
   {
     # I find that the result of is.prim(1) is true, that is not right
+    # 1 should not be consider as prime number.
+    # https://en.wikipedia.org/wiki/Prime_number
     if(is.prim(i) & i != 1) 
     {
       countss = countss + 1
@@ -131,8 +137,6 @@ Missing = function(inputdf)
     mvp = mv / totalv * 100
     # get the unique value
     uv = length(unique(inputdf[,i]))
-    # if the NaN is not a unique value
-    # if (mv>0) uv = uv -1
     mvc = c(mvc,mv)
     mvpc = c(mvpc,mvp)
     uvc = c(uvc,uv)
@@ -160,6 +164,11 @@ resulttest51
 resulttest52 = Missing(testdf2)
 resulttest52
 
+# many people prefer to use rbind for q5.
+# But dataframe is combined with vectors, so adding rows against the design of data structure
+# I dont like that, but if insist, be careful for the auto change from char to factor
+# use I(), or stringsAsFactors=FALSE
+# see in help("data.frame")
 
 
 
