@@ -133,23 +133,24 @@ pvalue
 # Q4
 # we need to conduct a two sample test
 # that the standard deviation of BMI is the same for both Outsome values
-# so we need two sample have same standard deviation
-# I use bootstrapping, two sample form common population should have the same standard deviation
-# so that we will give the two sample which have same standard deviation
+# so we need sample some data from BMI and set the rest to be the other sample.
+# since two sample form common population, they should have the same standard deviation
 # and also this is nonparametric test
 BMI = diabetes$BMI
 Outcome = diabetes$Outcome
-numof0 = sum(Outcome)
+numof1 = sum(Outcome)
 # calculate the both sd
 sd1 = sd(diabetes$BMI[diabetes$Outcome==0])
 sd2 = sd(diabetes$BMI[diabetes$Outcome==1])
 # the test statistic is the difference of two standard deviation
 tstat = sd1 -sd2
-
+# sample(v1,length(v1),replace=FALSE) will get a vector with same value but different sequences.
+# first length(BMI)-numof1 and the rest will be two samples
 f1 = function()
 {
-  x1 = sample(BMI,length(Outcome)-numof0,replace = TRUE)
-  x2 = sample(BMI,numof0,replace = TRUE)
+  x = sample(BMI,length(BMI),replace = FALSE)
+  x1 = x[1:(length(BMI)-numof1)]
+  x2 = x[(length(BMI)-numof1):length(BMI)]
   sd1 = sd(x1)
   sd2 = sd(x2)
   return(sd1-sd2)
