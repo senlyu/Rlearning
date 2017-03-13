@@ -106,6 +106,18 @@ pvalue
 # non-parametric test of median 80
 # because test the median, so the half is bigger than the median the other is small than the median
 # so the population is half bigger than the median(1), half is smaller than median(0)
+
+# about whether we should use sign test or ranked sign test:
+
+# 1. from the paper below, I see that they both have the same hypothesis
+# but ranked sign test takes the magnitude of the observation into account
+# http://iosrjournals.org/iosr-jm/papers/Vol10-issue1/Version-4/A010140106.pdf
+# 2. from wikioedia sign test:
+# the sign test is most useful if comparisons can only be expressed as x > y, x = y, or x < y. If, instead, the observations can be expressed as numeric quantities (x = 7, y = 18), or as ranks (rank of x = 1st, rank of y = 8th), then the paired t-test[1] or the Wilcoxon signed-rank test[2] will usually have greater power than the sign test to detect consistent differences.
+# https://en.wikipedia.org/wiki/Sign_test
+
+# so here I think both test will have the same effort in this question
+# so I use the sample one, sign test here.
 tstat = sum(ifelse(diabetes$Insulin>80,1,0))
 f1 = function()
 {
