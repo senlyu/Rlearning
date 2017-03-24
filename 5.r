@@ -105,7 +105,7 @@ s1 = sdist[sdist<mean(sdist)-gap|sdist>mean(sdist)+gap]
 s1
 pvalue = length(s1)/length(sdist)
 pvalue
-
+dui 
 # ad
 prop.table(table(ad$De))
 tstat = prop.table(table(ad$De))[1]

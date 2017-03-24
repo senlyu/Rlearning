@@ -53,6 +53,7 @@ plot(density(stat))
 
 
 getwd()
+setwd('/home/senlyu')
 diabetes = read.csv("diabetes.csv")
 
 # Q2
@@ -210,8 +211,7 @@ plot(density(sdist))
 abline(v=tstat,col="blue")
 gap = abs(mean(sdist)-tstat)
 abline(v=mean(sdist)-gap,col="red")
-abline(v=mean(sdist)+gap,col="red")
-s1 = sdist[sdist<mean(sdist)-gap|sdist>mean(sdist)+gap]
+s1 = sdist[sdist>tstat]
 pvalue = length(s1)/length(sdist)
 pvalue
 # the pvalue is very low
